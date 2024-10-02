@@ -26,7 +26,7 @@ RSpec.describe AlteredAccess::Card do
   end
 
   it "#altered_id" do
-    expect(subject.altered_id).to eq("/cards/ALT_CORE_B_Y:Z_17_R1")
+    expect(subject.altered_id).to eq("01HKAFJP3CN1N8ZJ8N2HCEV3E1")
   end
 
   it "#type" do
@@ -56,5 +56,12 @@ RSpec.describe AlteredAccess::Card do
 
   it "#qr_url_detail" do
     expect(subject.qr_url_detail).to eq("https://qr.altered.gg/ALT_CORE_B_YZ_17_R1")
+  end
+
+  it "#main_faction" do
+    expected = AlteredAccess::KeyCleaner.clean(parsed_json["mainFaction"])
+    expect(Faction).to receive(:new).with(expected)
+    binding.pry
+    subject.main_faction
   end
 end
