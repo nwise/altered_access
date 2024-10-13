@@ -8,8 +8,14 @@ Gem::Specification.new do |spec|
   spec.authors = ["Nathan Wise"]
   spec.email = ["nathanwise@gmail.com"]
 
-  spec.summary = "AlteredAccess is a gem that provides a simple interface for interacting with the Altered Access API."
-  spec.description = "AlteredAccess is a gem that provides a simple interface for interacting with the Altered Access API. It is a simple Ruby wrapper around the Altered Access API. It is designed to make it easy to interact with the Altered Access API in a Ruby application. It is designed to be simple to use and to provide a simple interface for interacting with the Altered Access API. It is designed to be simple to use and to provide a simple interface for interacting with the Altered Access API."
+  spec.summary = "AlteredAccess is a gem that provides a simple interface " \
+                 "for interacting with the Altered Access API."
+  spec.description = "AlteredAccess is a gem that provides a simple " \
+                     "interface for interacting with the Altered Access API." \
+                     "It is a simple Ruby wrapper around the Altered Access " \
+                     "API. It is designed to make it easy to interact with " \
+                     "the Altered Access API in a Ruby application."
+
   spec.homepage = "https://github.com/nwise/altered_access"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
@@ -18,15 +24,23 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/nwise/altered_access/blob/main/CHANGELOG.md"
+  spec.metadata["changelog_uri"] =
+    "https://github.com/nwise/altered_access/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  # The `git ls-files -z` loads the files in the RubyGem that have been
+  # added into git.
   gemspec = File.basename(__FILE__)
-  spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
+  spec.files = IO.popen(
+    %w[git ls-files -z],
+    chdir: __dir__,
+    err: IO::NULL
+  ) do |ls|
     ls.readlines("\x0", chomp: true).reject do |f|
       (f == gemspec) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+        f.start_with?(
+          *%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile]
+        )
     end
   end
   spec.bindir = "exe"
@@ -34,14 +48,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_development_dependency "guard", "~> 2.18.1"
-  spec.add_development_dependency "guard-rspec", "~> 4.7.3"
   spec.add_dependency "faraday"
   spec.add_dependency "json"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "rspec", "~> 3.13.0"
-  spec.add_development_dependency "simplecov"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
