@@ -2,8 +2,6 @@ PATH
   remote: .
   specs:
     altered_access (0.1.0)
-      faraday
-      json
 
 GEM
   remote: https://rubygems.org/
