@@ -1,5 +1,5 @@
 # AlteredAccess
-
+![example workflow](https://github.com/nwise/altered_access/actions/workflows/main.yml/badge.svg)
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
