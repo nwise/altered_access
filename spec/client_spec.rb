@@ -15,7 +15,7 @@ RSpec.describe AlteredAccess::Client do
         "@id" => 1,
         "@type" => "Faction",
         "reference" => "YZ",
-        "color": "purple",
+        color: "purple",
         "name" => "Faction 1"
       }.to_json
 
@@ -36,8 +36,8 @@ RSpec.describe AlteredAccess::Client do
     it "returns an array of Faction objects" do
       response_body = {
         "hydra:member" => [
-          { "@id" => 1, "@type" => "Faction", "reference" => "YZ", "color": "purple", "name" => "Faction 1" },
-          { "@id" => 2, "@type" => "Faction", "reference" => "YZ", "color": "purple", "name" => "Faction 1" }
+          { "@id" => 1, "@type" => "Faction", "reference" => "YZ", color: "purple", "name" => "Faction 1" },
+          { "@id" => 2, "@type" => "Faction", "reference" => "YZ", color: "purple", "name" => "Faction 1" }
         ]
       }.to_json
       response = instance_double(Faraday::Response, body: response_body)

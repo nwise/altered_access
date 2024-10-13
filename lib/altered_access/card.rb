@@ -3,8 +3,11 @@
 module AlteredAccess
   # Represents a card in a deck
   class Card
-    attr_accessor :context, :altered_id, :type, :reference, :lore_entries, :card_type, :card_sub_types, :card_set, :rarity,
-                  :card_rulings, :image_path, :assets, :lower_price, :qr_url_detail, :main_faction, :all_image_path, :name, :elements
+    attr_accessor :context, :altered_id, :type, :reference, :lore_entries,
+                  :card_type, :card_sub_types, :card_set, :rarity,
+                  :card_rulings, :image_path, :assets, :lower_price,
+                  :qr_url_detail, :main_faction, :all_image_path, :name,
+                  :elements
 
     def initialize(json_data)
       json = clean_keys(json_data)
@@ -22,12 +25,15 @@ module AlteredAccess
         **clean_keys(json[:mainFaction])
       )
 
-      # @lore_entries = json[:loreEntries].map { |entry| LoreEntry.new(entry) }
+      # @lore_entries =
+      #   json[:loreEntries].map { |entry| LoreEntry.new(entry) }
       # @card_type = CardType.new(json[:cardType])
-      # @card_sub_types = json[:cardSubTypes].map { |sub_type| CardSubType.new(sub_type) }
+      # @card_sub_types =
+      #   json[:cardSubTypes].map { |sub_type| CardSubType.new(sub_type) }
       # @card_set = CardSet.new(json[:cardSet])
       # @rarity = Rarity.new(json[:rarity])
-      # @card_rulings = json[:cardRulings].map { |ruling| CardRuling.new(ruling) }
+      # @card_rulings =
+      #   json[:cardRulings].map { |ruling| CardRuling.new(ruling) }
       # @elements = Elements.new(json[:elements])
     end
 

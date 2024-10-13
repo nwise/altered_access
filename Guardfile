@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
-directories %w(lib spec) \
-  .select{|d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist")}
+directories(%w[lib spec] \
+  .select { |d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist") })
 
 ## Note: if you are using the `directories` clause above and you are not
 ## watching the project directory ('.'), then you will want to move
@@ -15,7 +17,7 @@ directories %w(lib spec) \
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
-# Note: The cmd option is now required due to the increasing number of ways
+# NOTE: The cmd option is now required due to the increasing number of ways
 #       rspec may be run, below are examples of the most common uses.
 #  * bundler: 'bundle exec rspec'
 #  * bundler binstubs: 'bin/rspec'
@@ -41,7 +43,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl.watch_spec_files_for(ruby.lib_files)
 
   # Rails files
-  rails = dsl.rails(view_extensions: %w(erb haml slim))
+  rails = dsl.rails(view_extensions: %w[erb haml slim])
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
