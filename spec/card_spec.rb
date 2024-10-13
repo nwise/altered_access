@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "spec_helper"
+
 RSpec.describe AlteredAccess::Card do
   let(:card_json) { File.read("spec/seeds/card.json") }
   let(:parsed_json) { JSON.parse(card_json) }
@@ -22,6 +24,7 @@ RSpec.describe AlteredAccess::Card do
       "en-us": "bacee5c49ef861ee2b20751cfecb3c55.jpg",
       "fr-fr": "68092975d0dd6b536adcc21a5ebe4b46.jpg"
     }')
+
     expect(subject.all_image_path).to eq(expected)
   end
 
@@ -61,7 +64,6 @@ RSpec.describe AlteredAccess::Card do
   it "#main_faction" do
     expected = AlteredAccess::KeyCleaner.clean(parsed_json["mainFaction"])
     expect(Faction).to receive(:new).with(expected)
-    binding.pry
     subject.main_faction
   end
 end

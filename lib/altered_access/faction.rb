@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents a Faction
 class Faction
   attr_accessor :id, :type, :reference, :color, :name
 
